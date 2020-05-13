@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="super:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/super_jar</output-path>
+    <root id="archive" name="super.jar">
+      <element id="module-output" name="super" />
+    </root>
+  </artifact>
+</component>
