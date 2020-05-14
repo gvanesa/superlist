@@ -60,7 +60,6 @@ public class Main {
             Articulo aName = iterator.next();
             if ((artiNuevo.getArticulo().compareToIgnoreCase(aName.getArticulo()))==0){
                 aName.setCantidad(artiNuevo.getCantidad());
-                System.out.println(aName);
                 return true;
             }
         }
