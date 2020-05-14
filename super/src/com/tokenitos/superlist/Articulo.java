@@ -3,7 +3,7 @@ package com.tokenitos.superlist;
 public class Articulo
 {
 	private final String articulo;
-	private final int cantidad;
+	private int cantidad;
 
 	public Articulo(String articulo, int cantidad)
 	{
@@ -11,6 +11,10 @@ public class Articulo
 		this.cantidad=cantidad;
 	}
 
+	public void setCantidad(int cantidad)
+	{
+		this.cantidad=cantidad;
+	}
 	public String getArticulo()
 	{
 		return articulo;
@@ -30,7 +34,7 @@ public class Articulo
 
 	@Override
 	public String toString(){
-		return "Articulo=" + articulo + ", cantidad=" + cantidad;
+		return "Artículo: " + articulo + ",	Cantidad: " + cantidad;
 	}
 
 }

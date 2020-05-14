@@ -1,7 +1,5 @@
 package com.tokenitos.superlist;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -15,41 +13,63 @@ public class Main {
 
         Collection<Articulo> ListaArticulo = new ArrayList<>();
         Articulo articuloYPrecio = null;
+        Scanner arti = new Scanner(System.in);
+        Scanner cant = new Scanner(System.in);
+        String artiCantidad;
+        String artiNombre;
 
 
-        Scanner in = new Scanner(System.in);
-        Scanner inN = new Scanner(System.in);
         System.out.println("¿Qué deseas comprar?");
-        String s = in.nextLine();
-        while(!"fin".equals(s)) {
-            System.out.println("Cantidad");
-            String n = inN.nextLine();
-            articuloYPrecio = new Articulo(s,Integer.parseInt(n));
-            ListaArticulo.add(articuloYPrecio);
-            System.out.println("¿Qué deseas comprar?");
-            s = in.nextLine();
+        artiNombre = arti.nextLine();
+
+        while(!"finalizar".equalsIgnoreCase(artiNombre)) {
+
+            System.out.println("¿Qué Cantidad?");
+            artiCantidad = cant.nextLine();
+
+            while (!(isNumeric(artiCantidad))){
+
+                System.out.println("Por favor repita la cantidad, está debe ser numerica");
+                artiCantidad = cant.nextLine();
+
+            }
+
+            articuloYPrecio = new Articulo(artiNombre,Integer.parseInt(artiCantidad));
+
+            if (!(existeArticulo(ListaArticulo,articuloYPrecio))) {
+                ListaArticulo.add(articuloYPrecio);
+            }
+                System.out.println("¿Qué deseas comprar?");
+                artiNombre = cant.nextLine();
+
         }
+        System.out.println("La lista completa de sus productos es:");
         ListaArticulo.stream().forEach(System.out::println);
 
 
-//        String s;
-//        do{
-//            System.out.println("¿Qué deseas comprar?");
-//
-//             s = in.nextLine();
-//            System.out.println("Cantidad");
-//            Integer n = inN.nextInt();
-//        }while(!"fin".equals(s));
-
         }
 
 
 
 
-    public static void guardarEnLista(Articulo articulo){
-        Collection<Articulo> ListaArticulo = new ArrayList<>();
-        ListaArticulo.add(articulo);
+    public static boolean existeArticulo(Collection<Articulo> ListaArticulos, Articulo artiNuevo){
+
+        Iterator<Articulo> iterator = ListaArticulos.iterator();
+
+        while (iterator.hasNext()) {
+            Articulo aName = iterator.next();
+            if ((artiNuevo.getArticulo().compareToIgnoreCase(aName.getArticulo()))==0){
+                aName.setCantidad(artiNuevo.getCantidad());
+                System.out.println(aName);
+                return true;
+            }
         }
+        return false;
+    }
+
+
+
+
 
 
 

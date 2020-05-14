@@ -2,20 +2,15 @@ package com.tokenitos.superlist;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.function.Predicate;
 
 public class ListaArticulos {
 
     Collection<Articulo> listArticulos = new ArrayList<>();
 
-    public void agregarArticulo(Articulo art){
-        if(existeArticulo(art)){
-            System.out.println("articulo existente");
-        }
-    }
 
-    private boolean existeArticulo(Articulo art) {
-        return false;
-    }
+
+
 
     /*public static boolean estaArticulo()
     {
@@ -33,9 +28,6 @@ public class ListaArticulos {
         } else {
             System.out.println("El producto NO existe");
         }
-
-
-
     }*/
 
 }
