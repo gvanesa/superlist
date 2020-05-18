@@ -1,0 +1,2 @@
+<articulo>caramelos<cantidad>4
+<articulo>papas<cantidad>6

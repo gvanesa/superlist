@@ -1,15 +1,18 @@
 package com.tokenitos.superlist;
+import java.io.IOException;
 import java.util.*;
+
+import static com.tokenitos.superlist.Archivo.manejoPersistencia;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 	// write your code here
         System.out.println("Bienvenido a superlist!");
 	    menu();
     }
 
-    public static void menu(){
+    public static void menu() throws IOException {
 
         Collection<Articulo> ListaArticulo = new ArrayList<>();
         Articulo articuloYPrecio = null;
@@ -43,34 +46,35 @@ public class Main {
                 artiNombre = cant.nextLine();
 
         }
+        System.out.println("Desea guardar la lista?");
+        artiNombre = arti.nextLine();
+
+        if("si".equalsIgnoreCase(artiNombre)) {
+
+            manejoPersistencia(ListaArticulo);
+
+            }
         System.out.println("La lista completa de sus productos es:");
         ListaArticulo.stream().forEach(System.out::println);
 
 
-        }
+
+    }
 
 
 
 
     public static boolean existeArticulo(Collection<Articulo> ListaArticulos, Articulo artiNuevo){
 
-        Iterator<Articulo> iterator = ListaArticulos.iterator();
-
-        while (iterator.hasNext()) {
-            Articulo aName = iterator.next();
-            if ((artiNuevo.getArticulo().compareToIgnoreCase(aName.getArticulo()))==0){
+        for (Articulo aName : ListaArticulos) {
+            //  if ((artiNuevo.getArticulo().compareToIgnoreCase(aName.getArticulo()))==0){
+            if (aName.equals(artiNuevo)) {
                 aName.setCantidad(artiNuevo.getCantidad());
                 return true;
             }
         }
         return false;
     }
-
-
-
-
-
-
 
 
     private static boolean isNumeric(String cadena){
@@ -81,8 +85,6 @@ public class Main {
             return false;
         }
     }
-
-
 
 
 }
