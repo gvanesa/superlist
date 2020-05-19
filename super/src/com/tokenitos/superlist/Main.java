@@ -25,6 +25,13 @@ public class Main {
         System.out.println("¿Qué deseas comprar?");
         artiNombre = arti.nextLine();
 
+        while (validarVacio(artiNombre)){
+
+            System.out.println("Por favor infrese un articulo");
+            artiNombre = arti.nextLine();
+
+        }
+
         while(!"finalizar".equalsIgnoreCase(artiNombre)) {
 
             System.out.println("¿Qué Cantidad?");
@@ -45,15 +52,25 @@ public class Main {
                 System.out.println("¿Qué deseas comprar?");
                 artiNombre = cant.nextLine();
 
+                while (validarVacio(artiNombre)){
+
+                    System.out.println("Por favor infrese un articulo");
+                    artiNombre = arti.nextLine();
+
+                }
+
         }
-        System.out.println("Desea guardar la lista?");
+        System.out.println("Desea guardar la lista? (si/no)");
         artiNombre = arti.nextLine();
 
-        if("si".equalsIgnoreCase(artiNombre)) {
-
+        while (!(("si".equalsIgnoreCase(artiNombre))|| ("no".equalsIgnoreCase(artiNombre)))) {
+            System.out.println("Desea guardar la lista? (si/no)");
+            artiNombre = arti.nextLine();
+        }
+        if ("si".equalsIgnoreCase(artiNombre)) {
             manejoPersistencia(ListaArticulo);
+        }
 
-            }
         System.out.println("La lista completa de sus productos es:");
         ListaArticulo.stream().forEach(System.out::println);
 
@@ -84,6 +101,10 @@ public class Main {
         } catch (NumberFormatException nfe){
             return false;
         }
+    }
+
+    public static boolean validarVacio(String cadena){
+        return cadena.trim().isEmpty();
     }
 
 

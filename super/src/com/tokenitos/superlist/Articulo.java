@@ -50,7 +50,7 @@ public class Articulo
 
 	@Override
 	public String toString(){
-		return "Artículo: " + articulo + "	Cantidad: " + cantidad;
+		return "Artículo: " + articulo + '\t'+'\t'+"Cantidad: " + cantidad;
 	}
 
 	public String toPrint(){

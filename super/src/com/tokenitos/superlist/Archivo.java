@@ -33,7 +33,7 @@ public class Archivo {
             bw.close();
     }
 
-    public static void escribirOld(File archivo, Collection<Articulo> listaArticulo) throws IOException {  BufferedWriter bw;
+   /* public static void escribirOld(File archivo, Collection<Articulo> listaArticulo) throws IOException {  BufferedWriter bw;
         if (archivo.exists()) {
             bw = new BufferedWriter(new FileWriter(archivo));
             bw.write("El fichero de texto ya estaba creado.");
@@ -42,7 +42,7 @@ public class Archivo {
             bw.write("Acabo de crear el fichero de texto.");
         }
         bw.close();
-    }
+    }*/
 
     public static boolean existeArchivo(File archivo)  {
         Scanner sobre = new Scanner(System.in);
@@ -56,9 +56,14 @@ public class Archivo {
         Scanner sobre = new Scanner(System.in);
 
         System.out.println("Existe "+ archivo +" quiere sobreescribirlo?");
+        String sobreRta = sobre.nextLine();
 
-        if("si".equalsIgnoreCase(sobre.nextLine())) {
-            System.out.println("OK Sobreecribe");
+        while (!(("si".equalsIgnoreCase(sobreRta))|| ("no".equalsIgnoreCase(sobreRta)))) {
+            System.out.println("Existe "+ archivo +" quiere sobreescribirlo?");
+            sobreRta = sobre.nextLine();
+        }
+
+        if("si".equalsIgnoreCase(sobreRta)) {
             return true;
         }
         return false;
