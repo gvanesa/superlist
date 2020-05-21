@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Articulo
 {
-	private final String articulo;
+	private String articulo;
 	private int cantidad;
 
 	public Articulo(String articulo, int cantidad)
@@ -57,5 +57,8 @@ public class Articulo
 		return "<articulo>"+articulo+"<cantidad>"+cantidad+ '\n' ;
 	}
 
+	public void setArticulo(String s) {
+		this.articulo = s;
+	}
 }
 

@@ -1,1 +1,0 @@
-<articulo>panta<cantidad>9

@@ -1,13 +1,15 @@
 package com.tokenitos.superlist;
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-import static com.tokenitos.superlist.Archivo.manejoPersistencia;
+import static com.tokenitos.superlist.Archivo.*;
+import static java.util.stream.Collectors.toMap;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
-	// write your code here
+
         System.out.println("Bienvenido a superlist!");
 	    menu();
     }
@@ -15,6 +17,10 @@ public class Main {
     public static void menu() throws IOException {
 
         Collection<Articulo> ListaArticulo = new ArrayList<>();
+
+        ListaArticulo.addAll(inicializar());
+
+
         Articulo articuloYPrecio = null;
         Scanner arti = new Scanner(System.in);
         Scanner cant = new Scanner(System.in);
