@@ -80,6 +80,9 @@ public class Main {
         System.out.println("La lista completa de sus productos es:");
         ListaArticulo.stream().forEach(System.out::println);
 
+        System.out.println('\n'+"La cantidad de articulos es: "+ ListaArticulo.size());
+
+
 
 
     }
