@@ -7,19 +7,16 @@ import java.util.Scanner;
 
 public class Archivo {
 
-    static String ruta = "superlist.txt";
-    static File archivo = new File(ruta);
 
 
-    public static void manejoPersistencia(Collection<Articulo> ListaArticulo) throws IOException {
+
+    public static void manejoPersistencia(File archivo,Collection<Articulo> ListaArticulo) throws IOException {
         if (existeArchivo(archivo)) {
             if (sobreEscribeOUsa(archivo,'s')){
                 escribir(archivo, ListaArticulo);
-               // leerEImprimir(archivo);
             }
         }else{
             escribir(archivo, ListaArticulo);
-            //leerEImprimir(archivo);
 
         }
 
@@ -37,7 +34,8 @@ public class Archivo {
 
     public static Collection<Articulo> leerEImprimir(File archivo) throws IOException {
 
-        Collection<Articulo> ListaArticulo = new ArrayList<>();
+        Collection<Articulo> lista = new ArrayList<>();
+
 
 
         String[] textoSplit;
@@ -51,18 +49,18 @@ public class Archivo {
             String texto = br.readLine();
 
             //Repetir mientras no se llegue al final del fichero
-            while (texto != null) {
+        while (texto != null) {
 
-                textoSplit = texto.split("<articulo>");
-                textoSplit2 = textoSplit[1].split("<cantidad>");
+                textoSplit2 = texto.split(";");
+                //textoSplit2 = textoSplit[1].split("<cantidad>");
 
                 Articulo artGuardado = new Articulo(textoSplit2[0],Integer.parseInt(textoSplit2[1]));
 
-                ListaArticulo.add(artGuardado);
+                lista.add(artGuardado);
 
                 texto = br.readLine();
             }
-            return ListaArticulo;
+            return lista;
 
 
     }
@@ -78,27 +76,22 @@ public class Archivo {
     }*/
 
 
-    public static Collection<Articulo> inicializar() throws IOException {
-        String ruta = "superlist.txt";
-        File archivo = new File(ruta);
+      public static Collection<Articulo> inicializar(File archivo) throws IOException {
 
-        Collection<Articulo> ListaArticulo = new ArrayList<>();
+        Collection<Articulo> list = new ArrayList<>();
 
         if (existeArchivo(archivo))
         {
             if (sobreEscribeOUsa(archivo,'u')){
-            ListaArticulo=leerEImprimir(archivo);
+                list=leerEImprimir(archivo);
             }
         }
-        return ListaArticulo;
+        return list;
     }
 
     public static boolean existeArchivo(File archivo)  {
-        Scanner sobre = new Scanner(System.in);
-        if (archivo.exists()){
-            return true;
-        }
-            return false;
+        //Scanner sobre = new Scanner(System.in);
+       return archivo.exists();
     }
 
 

@@ -1,27 +1,44 @@
 package com.tokenitos.superlist;
+
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Scanner;
 
 import static com.tokenitos.superlist.Archivo.*;
-import static java.util.stream.Collectors.toMap;
+import static com.tokenitos.superlist.Listas.existeArticuloConsulta;
+import static com.tokenitos.superlist.Listas.leerPrecios;
 
 public class Main {
 
+    static final String RUTA_PRECIO = "precio.txt";
+    static final String RUTA_LISTA = "superlist.txt";
+    static File archivoPrecio = new File(RUTA_PRECIO);
+    static File archivoLista = new File(RUTA_LISTA);
+    static Collection<Articulo> listaPrecio = new ArrayList<>();
+    static Collection<Articulo> listaArticulo = new ArrayList<>();
+
+
+
     public static void main(String[] args) throws IOException {
 
-        System.out.println("Bienvenido a superlist!");
-	    menu();
+        System.out.println("-------------------------Bienvenido a superlist!-------------------------");
+
+        listaPrecio=leerPrecios(archivoPrecio);
+
+         menu();
     }
+
 
     public static void menu() throws IOException {
 
-        Collection<Articulo> ListaArticulo = new ArrayList<>();
+        Collection<Articulo> listaArticulo = new ArrayList<>();
 
-        ListaArticulo.addAll(inicializar());
+        listaArticulo.addAll(inicializar(archivoLista));
 
 
-        Articulo articuloYPrecio = null;
+        Articulo articuloYCantidad = null;
         Scanner arti = new Scanner(System.in);
         Scanner cant = new Scanner(System.in);
         String artiCantidad;
@@ -33,7 +50,7 @@ public class Main {
 
         while (validarVacio(artiNombre)){
 
-            System.out.println("Por favor infrese un articulo");
+            System.out.println("Por favor ingrese un articulo");
             artiNombre = arti.nextLine();
 
         }
@@ -50,17 +67,17 @@ public class Main {
 
             }
 
-            articuloYPrecio = new Articulo(artiNombre,Integer.parseInt(artiCantidad));
+            articuloYCantidad = new Articulo(artiNombre,Integer.parseInt(artiCantidad));
 
-            if (!(existeArticulo(ListaArticulo,articuloYPrecio))) {
-                ListaArticulo.add(articuloYPrecio);
+            if (!(Listas.existeArticuloActualiza(listaArticulo,articuloYCantidad))) {
+                listaArticulo.add(articuloYCantidad);
             }
                 System.out.println("¿Qué deseas comprar?");
                 artiNombre = cant.nextLine();
 
                 while (validarVacio(artiNombre)){
 
-                    System.out.println("Por favor infrese un articulo");
+                    System.out.println("Por favor ingrese un articulo");
                     artiNombre = arti.nextLine();
 
                 }
@@ -74,13 +91,14 @@ public class Main {
             artiNombre = arti.nextLine();
         }
         if ("si".equalsIgnoreCase(artiNombre)) {
-            manejoPersistencia(ListaArticulo);
+            manejoPersistencia(archivoLista,listaArticulo);
         }
 
         System.out.println("La lista completa de sus productos es:");
-        ListaArticulo.stream().forEach(System.out::println);
+        listaArticulo.stream().forEach(System.out::println);
 
-        System.out.println('\n'+"La cantidad de articulos es: "+ ListaArticulo.size());
+        System.out.println('\n'+"La cantidad de articulos es: "+ listaArticulo.size());
+
 
 
 
@@ -88,19 +106,6 @@ public class Main {
     }
 
 
-
-
-    public static boolean existeArticulo(Collection<Articulo> ListaArticulos, Articulo artiNuevo){
-
-        for (Articulo aName : ListaArticulos) {
-            //  if ((artiNuevo.getArticulo().compareToIgnoreCase(aName.getArticulo()))==0){
-            if (aName.equals(artiNuevo)) {
-                aName.setCantidad(artiNuevo.getCantidad());
-                return true;
-            }
-        }
-        return false;
-    }
 
 
     private static boolean isNumeric(String cadena){

@@ -54,7 +54,7 @@ public class Articulo
 	}
 
 	public String toPrint(){
-		return "<articulo>"+articulo+"<cantidad>"+cantidad+ '\n' ;
+		return articulo+";"+cantidad+ '\n' ;
 	}
 
 	public void setArticulo(String s) {
