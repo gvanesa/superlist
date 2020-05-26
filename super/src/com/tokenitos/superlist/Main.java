@@ -101,7 +101,7 @@ public class Main {
         System.out.println('\n'+"La suma de articulos distintos es: "+ suma(listaArticulo));
 
         validarPrecios(listaArticulo,listaPrecio);
-        System.out.println('\n'+"La suma de articulos distintos es: "+ calculaPrecio(listaArticulo,listaPrecio));
+        System.out.println('\n'+"El monto total de los articulos es: "+ calculaPrecio(listaArticulo,listaPrecio));
 
     }
 
