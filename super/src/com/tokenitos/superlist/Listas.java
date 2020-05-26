@@ -29,9 +29,9 @@ public class Listas {
 
 
 
-    public static boolean existeArticuloActualiza(Collection<Articulo> ListaArticulos, Articulo artiNuevo) {
+    public static boolean existeArticuloActualiza(Collection<Articulo> listaArticulos, Articulo artiNuevo) {
 
-        for (Articulo aName : ListaArticulos) {
+        for (Articulo aName : listaArticulos) {
             if ((artiNuevo.getArticulo().compareToIgnoreCase(aName.getArticulo())) == 0) {
                 if (aName.equals(artiNuevo)) {
                     aName.setCantidad(artiNuevo.getCantidad());
@@ -41,10 +41,9 @@ public class Listas {
         }return false;
     }
 
-    public static Articulo existeArticulo(Collection<Articulo> ListaArticulos, Articulo artiNuevo){
+    public static Articulo existeArticulo(Collection<Articulo> listaArticulos, Articulo artiNuevo){
 
-        for (Articulo aName : ListaArticulos) {
-            //  if ((artiNuevo.getArticulo().compareToIgnoreCase(aName.getArticulo()))==0){
+        for (Articulo aName : listaArticulos) {
             if (aName.equals(artiNuevo)) {
                 return aName;
             }
@@ -52,13 +51,12 @@ public class Listas {
         return artiNuevo;
     }
 
-    public static boolean existeArticuloConsulta(Collection<Articulo> ListaArticulos, Articulo artiNuevo){
+    public static boolean existeArticuloConsulta(Collection<Articulo> listaArticulos, Articulo artiNuevo){
 
-        for (Articulo aName : ListaArticulos) {
+        for (Articulo aName : listaArticulos) {
             if ((artiNuevo.getArticulo().compareToIgnoreCase(aName.getArticulo()))==0){
-            //if (aName.equals(artiNuevo)) {
                 return true;
-           // }
+
         }
     }
         return false;
@@ -112,7 +110,8 @@ public class Listas {
             Articulo elemento= (Articulo) it.next();
 
             if (!(existeArticuloConsulta(listaPrecio,elemento))) {
-                listaPrecio.add(elemento);
+                actualizaPrecio(listaPrecio,elemento);
+                //listaPrecio.add(elemento);
             }
         }
     }

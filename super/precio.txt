@@ -1,2 +1,2 @@
-papas;150
-uvas;120
+papas;100
+uvas;100

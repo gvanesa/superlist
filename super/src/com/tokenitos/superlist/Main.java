@@ -69,7 +69,7 @@ public class Main {
             articuloYCantidad = new Articulo(artiNombre,Integer.parseInt(artiCantidad));
             actualizaPrecio(listaPrecio,articuloYCantidad);
 
-            if (!(Listas.existeArticuloActualiza(listaArticulo,articuloYCantidad))) {
+            if (!(existeArticuloActualiza(listaArticulo,articuloYCantidad))) {
                 listaArticulo.add(articuloYCantidad);
             }
                 System.out.println("¿Qué deseas comprar?");
@@ -83,6 +83,8 @@ public class Main {
                 }
 
         }
+        validarPrecios(listaArticulo,listaPrecio);
+
         System.out.println("Desea guardar la lista? (si/no)");
         artiNombre = arti.nextLine();
 
@@ -94,14 +96,13 @@ public class Main {
             manejoPersistencia(archivoLista,listaArticulo);
         }
 
-        System.out.println("La lista completa de sus productos es:");
+        System.out.println('\n'+"La lista completa de sus productos es:");
         listaArticulo.stream().forEach(System.out::println);
+        System.out.println();
+        System.out.println('\t'+"La cantidad de articulos distintos es: "+ listaArticulo.size());
+        System.out.println('\t'+"La suma de articulos distintos es: "+ suma(listaArticulo));
 
-        System.out.println('\n'+"La cantidad de articulos distintos es: "+ listaArticulo.size());
-        System.out.println('\n'+"La suma de articulos distintos es: "+ suma(listaArticulo));
-
-        validarPrecios(listaArticulo,listaPrecio);
-        System.out.println('\n'+"La suma de articulos distintos es: "+ calculaPrecio(listaArticulo,listaPrecio));
+        System.out.println('\t'+"El monto total de la compra es: "+ calculaPrecio(listaArticulo,listaPrecio));
 
     }
 
