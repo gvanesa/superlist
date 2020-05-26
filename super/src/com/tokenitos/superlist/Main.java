@@ -7,8 +7,7 @@ import java.util.Collection;
 import java.util.Scanner;
 
 import static com.tokenitos.superlist.Archivo.*;
-import static com.tokenitos.superlist.Listas.existeArticuloConsulta;
-import static com.tokenitos.superlist.Listas.leerPrecios;
+import static com.tokenitos.superlist.Listas.*;
 
 public class Main {
 
@@ -68,6 +67,7 @@ public class Main {
             }
 
             articuloYCantidad = new Articulo(artiNombre,Integer.parseInt(artiCantidad));
+            actualizaPrecio(listaPrecio,articuloYCantidad);
 
             if (!(Listas.existeArticuloActualiza(listaArticulo,articuloYCantidad))) {
                 listaArticulo.add(articuloYCantidad);
@@ -97,18 +97,18 @@ public class Main {
         System.out.println("La lista completa de sus productos es:");
         listaArticulo.stream().forEach(System.out::println);
 
-        System.out.println('\n'+"La cantidad de articulos es: "+ listaArticulo.size());
+        System.out.println('\n'+"La cantidad de articulos distintos es: "+ listaArticulo.size());
+        System.out.println('\n'+"La suma de articulos distintos es: "+ suma(listaArticulo));
 
-
-
-
+        validarPrecios(listaArticulo,listaPrecio);
+        System.out.println('\n'+"La suma de articulos distintos es: "+ calculaPrecio(listaArticulo,listaPrecio));
 
     }
 
 
 
 
-    private static boolean isNumeric(String cadena){
+    static boolean isNumeric(String cadena){
         try {
             Integer.parseInt(cadena);
             return true;

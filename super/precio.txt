@@ -1,4 +1,2 @@
-papas;70
-coca cola;150
-caramelos;1
-chupetin;1
+papas;150
+uvas;120
