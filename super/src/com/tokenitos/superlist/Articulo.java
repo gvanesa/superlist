@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Articulo
 {
-	private final String articulo;
+	private String articulo;
 	private int cantidad;
 
 	public Articulo(String articulo, int cantidad)
@@ -50,12 +50,15 @@ public class Articulo
 
 	@Override
 	public String toString(){
-		return "Artículo: " + articulo + "	Cantidad: " + cantidad;
+		return "Artículo: " + articulo + '\t'+'\t'+"Cantidad: " + cantidad;
 	}
 
 	public String toPrint(){
-		return "<articulo>"+articulo+"<cantidad>"+cantidad+ '\n' ;
+		return articulo+";"+cantidad+ '\n' ;
 	}
 
+	public void setArticulo(String s) {
+		this.articulo = s;
+	}
 }
 

@@ -1,6 +1,7 @@
 package com.tokenitos.superlist;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Scanner;
 
@@ -8,12 +9,10 @@ public class Archivo {
 
 
 
-    static String ruta = "superlist.txt";
-    static File archivo = new File(ruta);
 
-    public static void manejoPersistencia(Collection<Articulo> ListaArticulo) throws IOException {
+    public static void manejoPersistencia(File archivo,Collection<Articulo> ListaArticulo) throws IOException {
         if (existeArchivo(archivo)) {
-            if (sobreEscribe(archivo)){
+            if (sobreEscribeOUsa(archivo,'s')){
                 escribir(archivo, ListaArticulo);
             }
         }else{
@@ -33,7 +32,39 @@ public class Archivo {
             bw.close();
     }
 
-    public static void escribirOld(File archivo, Collection<Articulo> listaArticulo) throws IOException {  BufferedWriter bw;
+    public static Collection<Articulo> leerEImprimir(File archivo) throws IOException {
+
+        Collection<Articulo> lista = new ArrayList<>();
+
+
+
+        String[] textoSplit;
+        String[] textoSplit2;
+        BufferedReader br = null;
+
+            //Crear un objeto BufferedReader al que se le pasa
+            //   un objeto FileReader con el nombre del fichero
+            br = new BufferedReader(new FileReader(archivo));
+            //Leer la primera línea, guardando en un String
+            String texto = br.readLine();
+
+            //Repetir mientras no se llegue al final del fichero
+        while (texto != null) {
+
+                textoSplit2 = texto.split(";");
+                //textoSplit2 = textoSplit[1].split("<cantidad>");
+
+                Articulo artGuardado = new Articulo(textoSplit2[0],Integer.parseInt(textoSplit2[1]));
+
+                lista.add(artGuardado);
+
+                texto = br.readLine();
+            }
+            return lista;
+
+
+    }
+   /* public static void escribirOld(File archivo, Collection<Articulo> listaArticulo) throws IOException {  BufferedWriter bw;
         if (archivo.exists()) {
             bw = new BufferedWriter(new FileWriter(archivo));
             bw.write("El fichero de texto ya estaba creado.");
@@ -42,23 +73,49 @@ public class Archivo {
             bw.write("Acabo de crear el fichero de texto.");
         }
         bw.close();
+    }*/
+
+
+      public static Collection<Articulo> inicializar(File archivo) throws IOException {
+
+        Collection<Articulo> list = new ArrayList<>();
+
+        if (existeArchivo(archivo))
+        {
+            if (sobreEscribeOUsa(archivo,'u')){
+                list=leerEImprimir(archivo);
+            }
+        }
+        return list;
     }
 
     public static boolean existeArchivo(File archivo)  {
-        Scanner sobre = new Scanner(System.in);
-        if (archivo.exists()){
-            return true;
-        }
-            return false;
+        //Scanner sobre = new Scanner(System.in);
+       return archivo.exists();
     }
 
-    public static boolean sobreEscribe(File archivo)  {
+
+
+    public static boolean sobreEscribeOUsa(File archivo,char opcion)  {
         Scanner sobre = new Scanner(System.in);
 
-        System.out.println("Existe "+ archivo +" quiere sobreescribirlo?");
+        if (opcion == 'u') {
+            System.out.println("Existe " + archivo + " quiere continuar con la lista? (si/no)");
+        }else {
+            System.out.println("Existe " + archivo + " quiere sobreescribirlo? (si/no)");
+        }
+        String sobreRta = sobre.nextLine();
 
-        if("si".equalsIgnoreCase(sobre.nextLine())) {
-            System.out.println("OK Sobreecribe");
+        while (!(("si".equalsIgnoreCase(sobreRta))|| ("no".equalsIgnoreCase(sobreRta)))) {
+            if (opcion == 'u') {
+                System.out.println("Existe " + archivo + " quiere continuar con la lista? (si/no)");
+            }else {
+                System.out.println("Existe " + archivo + " quiere sobreescribirlo? (si/no)");
+            }
+            sobreRta = sobre.nextLine();
+        }
+
+        if("si".equalsIgnoreCase(sobreRta)) {
             return true;
         }
         return false;
