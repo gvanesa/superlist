@@ -89,13 +89,13 @@ public class Listas {
 
         if (!(existeArticuloConsulta(lista,artiNuevo))){
 
-                    System.out.println("su "+ artiNuevo.getArticulo() +" no se encuentra en la lista de precios, indique precio corresponde");
+                    System.out.println("Su selección "+ artiNuevo.getArticulo() +" no se encuentra en la lista de precios, indique precio corresponde");
          
                     artiCantidad = cant.nextLine();
 
                     while (!(isNumeric(artiCantidad))){
 
-                        System.out.println("su "+ artiNuevo.getArticulo() +"no se encuentra en la lista de precios, indique precio corresponde");
+                        System.out.println("Su selección "+ artiNuevo.getArticulo() +" no se encuentra en la lista de precios, indique precio corresponde");
                         artiCantidad = cant.nextLine();
 
                     }

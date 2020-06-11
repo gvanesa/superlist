@@ -94,7 +94,7 @@ public class Main {
             manejoPersistencia(archivoLista,listaArticulo);
         }
 
-        System.out.println("La lista completa de sus productos es:");
+        System.out.println('\t'+"La lista completa de sus productos es:");
         listaArticulo.stream().forEach(System.out::println);
 
         System.out.println('\n'+"La cantidad de articulos distintos es: "+ listaArticulo.size());
