@@ -1,4 +1,4 @@
-package com.tokenitos.superlist;
+package main.java.com.tokenitos.superlist;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,10 +6,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Scanner;
-
-import static com.tokenitos.superlist.Archivo.existeArchivo;
-import static com.tokenitos.superlist.Archivo.leerEImprimir;
-import static com.tokenitos.superlist.Main.isNumeric;
 
 public class Listas {
 
@@ -20,9 +16,9 @@ public class Listas {
     public static Collection<Articulo> leerPrecios(File archivo) throws IOException {
 
         Collection<Articulo> listaPrecios = new ArrayList<>();
-        if (existeArchivo(archivo))
+        if (Archivo.existeArchivo(archivo))
         {
-            listaPrecios=leerEImprimir(archivo);
+            listaPrecios= Archivo.leerEImprimir(archivo);
         }
         return listaPrecios;
     }
@@ -91,7 +87,7 @@ public class Listas {
          
                     artiCantidad = cant.nextLine();
 
-                    while (!(isNumeric(artiCantidad))){
+                    while (!(Main.isNumeric(artiCantidad))){
 
                         System.out.println("su "+ artiNuevo.getArticulo() +"no se encuentra en la lista de precios, indique precio corresponde");
                         artiCantidad = cant.nextLine();

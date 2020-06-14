@@ -1,4 +1,4 @@
-package com.tokenitos.superlist;
+package main.java.com.tokenitos.superlist;
 
 import java.util.Objects;
 
@@ -42,10 +42,7 @@ public class Articulo
 	}
 
 	public boolean equals(Articulo art){
-		if(this.articulo.trim().equalsIgnoreCase(art.getArticulo())){
-			return true;
-		}
-		return false;
+		return this.articulo.trim().equalsIgnoreCase(art.getArticulo());
 	}
 
 	@Override

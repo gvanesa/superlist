@@ -1,4 +1,4 @@
-package com.tokenitos.superlist;
+package main.java.com.tokenitos.superlist;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -115,10 +115,7 @@ public class Archivo {
             sobreRta = sobre.nextLine();
         }
 
-        if("si".equalsIgnoreCase(sobreRta)) {
-            return true;
-        }
-        return false;
+        return "si".equalsIgnoreCase(sobreRta);
     }
 
 
