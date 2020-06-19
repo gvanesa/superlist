@@ -1,4 +1,4 @@
-package main.java.com.tokenitos.superlist;
+package main.java.superlist;
 
 import java.io.File;
 import java.io.IOException;
@@ -53,8 +53,8 @@ public class Listas {
             if ((artiNuevo.getArticulo().compareToIgnoreCase(aName.getArticulo()))==0){
                 return true;
 
+            }
         }
-    }
         return false;
     }
 
@@ -83,20 +83,20 @@ public class Listas {
 
         if (!(existeArticuloConsulta(lista,artiNuevo))){
 
-                    System.out.println("su "+ artiNuevo.getArticulo() +" no se encuentra en la lista de precios, indique precio corresponde");
-         
-                    artiCantidad = cant.nextLine();
+            System.out.println("su "+ artiNuevo.getArticulo() +" no se encuentra en la lista de precios, indique precio corresponde");
 
-                    while (!(Main.isNumeric(artiCantidad))){
+            artiCantidad = cant.nextLine();
 
-                        System.out.println("su "+ artiNuevo.getArticulo() +"no se encuentra en la lista de precios, indique precio corresponde");
-                        artiCantidad = cant.nextLine();
+            while (!(Main.isNumeric(artiCantidad))){
 
-                    }
-                Articulo articuloYCantidad = new Articulo(artiNuevo.getArticulo(), Integer.parseInt(artiCantidad));
-                lista.add(articuloYCantidad);
-                }
-             }
+                System.out.println("su "+ artiNuevo.getArticulo() +"no se encuentra en la lista de precios, indique precio corresponde");
+                artiCantidad = cant.nextLine();
+
+            }
+            Articulo articuloYCantidad = new Articulo(artiNuevo.getArticulo(), Integer.parseInt(artiCantidad));
+            lista.add(articuloYCantidad);
+        }
+    }
 
     public static void validarPrecios(Collection<Articulo> listaArticulo, Collection<Articulo> listaPrecio){
 
