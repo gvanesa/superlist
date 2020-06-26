@@ -1,4 +1,6 @@
-package com.tokenitos.superlist;
+package main.java.superlist;
+
+//import com.google.gson.Gson;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,8 +8,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Scanner;
 
-import static com.tokenitos.superlist.Archivo.*;
-import static com.tokenitos.superlist.Listas.*;
+import static main.java.superlist.Archivo.inicializar;
+import static main.java.superlist.Archivo.manejoPersistencia;
+import static main.java.superlist.Listas.*;
+
 
 public class Main {
 
@@ -26,11 +30,14 @@ public class Main {
 
         listaPrecio=leerPrecios(archivoPrecio);
 
-         menu();
+        menu();
     }
 
 
     public static void menu() throws IOException {
+
+
+       // Gson g = new Gson();
 
         Collection<Articulo> listaArticulo = new ArrayList<>();
 
@@ -47,6 +54,9 @@ public class Main {
         System.out.println("¿Qué deseas comprar?");
         artiNombre = arti.nextLine();
 
+        //System.out.println(g.toJson(artiNombre));
+
+
         while (validarVacio(artiNombre)){
 
             System.out.println("Por favor ingrese un articulo");
@@ -58,6 +68,8 @@ public class Main {
 
             System.out.println("¿Qué Cantidad?");
             artiCantidad = cant.nextLine();
+           // System.out.println(g.toJson(artiNombre));
+
 
             while (!(isNumeric(artiCantidad))){
 
@@ -68,21 +80,25 @@ public class Main {
 
             articuloYCantidad = new Articulo(artiNombre,Integer.parseInt(artiCantidad));
             actualizaPrecio(listaPrecio,articuloYCantidad);
+          //  System.out.println(g.toJson(articuloYCantidad));
 
-            if (!(Listas.existeArticuloActualiza(listaArticulo,articuloYCantidad))) {
+            if (!(existeArticuloActualiza(listaArticulo,articuloYCantidad))) {
                 listaArticulo.add(articuloYCantidad);
             }
-                System.out.println("¿Qué deseas comprar?");
-                artiNombre = cant.nextLine();
+            System.out.println("¿Qué deseas comprar?");
+            artiNombre = cant.nextLine();
 
-                while (validarVacio(artiNombre)){
+            while (validarVacio(artiNombre)){
 
-                    System.out.println("Por favor ingrese un articulo");
-                    artiNombre = arti.nextLine();
+                System.out.println("Por favor ingrese un articulo");
+                artiNombre = arti.nextLine();
 
-                }
+
+            }
 
         }
+        validarPrecios(listaArticulo,listaPrecio);
+
         System.out.println("Desea guardar la lista? (si/no)");
         artiNombre = arti.nextLine();
 
@@ -94,14 +110,15 @@ public class Main {
             manejoPersistencia(archivoLista,listaArticulo);
         }
 
-        System.out.println('\t'+"La lista completa de sus productos es:");
+        System.out.println('\n'+"La lista completa de sus productos es:");
         listaArticulo.stream().forEach(System.out::println);
+        System.out.println();
+        System.out.println('\t'+"La cantidad de articulos distintos es: "+ listaArticulo.size());
+        System.out.println('\t'+"La suma de articulos distintos es: "+ suma(listaArticulo));
 
-        System.out.println('\n'+"La cantidad de articulos distintos es: "+ listaArticulo.size());
-        System.out.println('\n'+"La suma de articulos distintos es: "+ suma(listaArticulo));
+        System.out.println('\t'+"El monto total de la compra es: "+ calculaPrecio(listaArticulo,listaPrecio));
 
-        validarPrecios(listaArticulo,listaPrecio);
-        System.out.println('\n'+"El monto total de los articulos es: "+ calculaPrecio(listaArticulo,listaPrecio));
+
 
     }
 

@@ -1,16 +1,17 @@
-package com.tokenitos.superlist;
+package main.java.superlist;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Scanner;
 
+
 public class Archivo {
 
 
 
 
-    public static void manejoPersistencia(File archivo,Collection<Articulo> ListaArticulo) throws IOException {
+    public static void manejoPersistencia(File archivo, Collection<Articulo> ListaArticulo) throws IOException {
         if (existeArchivo(archivo)) {
             if (sobreEscribeOUsa(archivo,'s')){
                 escribir(archivo, ListaArticulo);
@@ -24,12 +25,14 @@ public class Archivo {
 
     public static void escribir(File archivo, Collection<Articulo> ListaArticulo) throws IOException {  BufferedWriter bw;
 
-            bw = new BufferedWriter(new FileWriter(archivo));
-            for (Articulo p:ListaArticulo) {
+        bw = new BufferedWriter(new FileWriter(archivo));
+        for (Articulo p:ListaArticulo) {
 
-                bw.write(String.valueOf(p.toPrint()));
-            }
-            bw.close();
+            bw.write(String.valueOf(p.toPrint()));
+           // bw.write(String.valueOf(p.toPrint()));
+
+        }
+        bw.close();
     }
 
     public static Collection<Articulo> leerEImprimir(File archivo) throws IOException {
@@ -42,25 +45,25 @@ public class Archivo {
         String[] textoSplit2;
         BufferedReader br = null;
 
-            //Crear un objeto BufferedReader al que se le pasa
-            //   un objeto FileReader con el nombre del fichero
-            br = new BufferedReader(new FileReader(archivo));
-            //Leer la primera línea, guardando en un String
-            String texto = br.readLine();
+        //Crear un objeto BufferedReader al que se le pasa
+        //   un objeto FileReader con el nombre del fichero
+        br = new BufferedReader(new FileReader(archivo));
+        //Leer la primera línea, guardando en un String
+        String texto = br.readLine();
 
-            //Repetir mientras no se llegue al final del fichero
+        //Repetir mientras no se llegue al final del fichero
         while (texto != null) {
 
-                textoSplit2 = texto.split(";");
-                //textoSplit2 = textoSplit[1].split("<cantidad>");
+            textoSplit2 = texto.split(";");
+            //textoSplit2 = textoSplit[1].split("<cantidad>");
 
-                Articulo artGuardado = new Articulo(textoSplit2[0],Integer.parseInt(textoSplit2[1]));
+            Articulo artGuardado = new Articulo(textoSplit2[0],Integer.parseInt(textoSplit2[1]));
 
-                lista.add(artGuardado);
+            lista.add(artGuardado);
 
-                texto = br.readLine();
-            }
-            return lista;
+            texto = br.readLine();
+        }
+        return lista;
 
 
     }
@@ -76,7 +79,7 @@ public class Archivo {
     }*/
 
 
-      public static Collection<Articulo> inicializar(File archivo) throws IOException {
+    public static Collection<Articulo> inicializar(File archivo) throws IOException {
 
         Collection<Articulo> list = new ArrayList<>();
 
@@ -91,7 +94,7 @@ public class Archivo {
 
     public static boolean existeArchivo(File archivo)  {
         //Scanner sobre = new Scanner(System.in);
-       return archivo.exists();
+        return archivo.exists();
     }
 
 
@@ -115,10 +118,7 @@ public class Archivo {
             sobreRta = sobre.nextLine();
         }
 
-        if("si".equalsIgnoreCase(sobreRta)) {
-            return true;
-        }
-        return false;
+        return "si".equalsIgnoreCase(sobreRta);
     }
 
 

@@ -1,4 +1,4 @@
-package com.tokenitos.superlist;
+package main.java.superlist;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,10 +6,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Scanner;
-
-import static com.tokenitos.superlist.Archivo.existeArchivo;
-import static com.tokenitos.superlist.Archivo.leerEImprimir;
-import static com.tokenitos.superlist.Main.isNumeric;
 
 public class Listas {
 
@@ -20,18 +16,18 @@ public class Listas {
     public static Collection<Articulo> leerPrecios(File archivo) throws IOException {
 
         Collection<Articulo> listaPrecios = new ArrayList<>();
-        if (existeArchivo(archivo))
+        if (Archivo.existeArchivo(archivo))
         {
-            listaPrecios=leerEImprimir(archivo);
+            listaPrecios= Archivo.leerEImprimir(archivo);
         }
         return listaPrecios;
     }
 
 
 
-    public static boolean existeArticuloActualiza(Collection<Articulo> ListaArticulos, Articulo artiNuevo) {
+    public static boolean existeArticuloActualiza(Collection<Articulo> listaArticulos, Articulo artiNuevo) {
 
-        for (Articulo aName : ListaArticulos) {
+        for (Articulo aName : listaArticulos) {
             if ((artiNuevo.getArticulo().compareToIgnoreCase(aName.getArticulo())) == 0) {
                 if (aName.equals(artiNuevo)) {
                     aName.setCantidad(artiNuevo.getCantidad());
@@ -41,10 +37,9 @@ public class Listas {
         }return false;
     }
 
-    public static Articulo existeArticulo(Collection<Articulo> ListaArticulos, Articulo artiNuevo){
+    public static Articulo existeArticulo(Collection<Articulo> listaArticulos, Articulo artiNuevo){
 
-        for (Articulo aName : ListaArticulos) {
-            //  if ((artiNuevo.getArticulo().compareToIgnoreCase(aName.getArticulo()))==0){
+        for (Articulo aName : listaArticulos) {
             if (aName.equals(artiNuevo)) {
                 return aName;
             }
@@ -52,15 +47,14 @@ public class Listas {
         return artiNuevo;
     }
 
-    public static boolean existeArticuloConsulta(Collection<Articulo> ListaArticulos, Articulo artiNuevo){
+    public static boolean existeArticuloConsulta(Collection<Articulo> listaArticulos, Articulo artiNuevo){
 
-        for (Articulo aName : ListaArticulos) {
+        for (Articulo aName : listaArticulos) {
             if ((artiNuevo.getArticulo().compareToIgnoreCase(aName.getArticulo()))==0){
-            //if (aName.equals(artiNuevo)) {
                 return true;
-           // }
+
+            }
         }
-    }
         return false;
     }
 
@@ -89,20 +83,20 @@ public class Listas {
 
         if (!(existeArticuloConsulta(lista,artiNuevo))){
 
-                    System.out.println("Su selección "+ artiNuevo.getArticulo() +" no se encuentra en la lista de precios, indique precio corresponde");
-         
-                    artiCantidad = cant.nextLine();
+            System.out.println("su "+ artiNuevo.getArticulo() +" no se encuentra en la lista de precios, indique precio corresponde");
 
-                    while (!(isNumeric(artiCantidad))){
+            artiCantidad = cant.nextLine();
 
-                        System.out.println("Su selección "+ artiNuevo.getArticulo() +" no se encuentra en la lista de precios, indique precio corresponde");
-                        artiCantidad = cant.nextLine();
+            while (!(Main.isNumeric(artiCantidad))){
 
-                    }
-                Articulo articuloYCantidad = new Articulo(artiNuevo.getArticulo(), Integer.parseInt(artiCantidad));
-                lista.add(articuloYCantidad);
-                }
-             }
+                System.out.println("su "+ artiNuevo.getArticulo() +"no se encuentra en la lista de precios, indique precio corresponde");
+                artiCantidad = cant.nextLine();
+
+            }
+            Articulo articuloYCantidad = new Articulo(artiNuevo.getArticulo(), Integer.parseInt(artiCantidad));
+            lista.add(articuloYCantidad);
+        }
+    }
 
     public static void validarPrecios(Collection<Articulo> listaArticulo, Collection<Articulo> listaPrecio){
 
@@ -112,7 +106,8 @@ public class Listas {
             Articulo elemento= (Articulo) it.next();
 
             if (!(existeArticuloConsulta(listaPrecio,elemento))) {
-                listaPrecio.add(elemento);
+                actualizaPrecio(listaPrecio,elemento);
+                //listaPrecio.add(elemento);
             }
         }
     }
