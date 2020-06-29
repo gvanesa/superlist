@@ -1,0 +1,26 @@
+[
+  {
+    "articulo": "caramelos",
+    "cantidad": 30
+  },
+  {
+    "articulo": "papas",
+    "cantidad": 3
+  },
+  {
+    "articulo": "bananas",
+    "cantidad": 3
+  },
+  {
+    "articulo": "batatas",
+    "cantidad": 4
+  },
+  {
+    "articulo": "cebollas",
+    "cantidad": 1
+  },
+  {
+    "articulo": "vino",
+    "cantidad": 1
+  }
+]
