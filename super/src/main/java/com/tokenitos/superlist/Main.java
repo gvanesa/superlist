@@ -1,4 +1,4 @@
-package main.java.com.tokenitos.superlist;
+package com.tokenitos.superlist;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Scanner;
 
-import static main.java.com.tokenitos.superlist.Archivo.*;
-import static main.java.com.tokenitos.superlist.Listas.*;
+import static com.tokenitos.superlist.Archivo.*;
+import static com.tokenitos.superlist.Listas.*;
 
 public class Main {
 
@@ -69,7 +69,7 @@ public class Main {
             articuloYCantidad = new Articulo(artiNombre,Integer.parseInt(artiCantidad));
             actualizaPrecio(listaPrecio,articuloYCantidad);
 
-            if (!(Listas.existeArticuloActualiza(listaArticulo,articuloYCantidad))) {
+            if (!(existeArticuloActualiza(listaArticulo,articuloYCantidad))) {
                 listaArticulo.add(articuloYCantidad);
             }
                 System.out.println("¿Qué deseas comprar?");
