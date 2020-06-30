@@ -1,7 +1,7 @@
 out/
 super/superlist.txt
 target/
-
+target/*.json
 
 # User-specific stuff
 .idea/**/workspace.xml

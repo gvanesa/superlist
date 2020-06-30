@@ -1,0 +1,70 @@
+[
+  {
+    "articulo": "caramelos",
+    "cantidad": 10
+  },
+  {
+    "articulo": "chocolate",
+    "cantidad": 50
+  },
+  {
+    "articulo": "papas",
+    "cantidad": 10
+  },
+  {
+    "articulo": "batatas",
+    "cantidad": 10
+  },
+  {
+    "articulo": "cebollas",
+    "cantidad": 10
+  },
+  {
+    "articulo": "bananas",
+    "cantidad": 100
+  },
+  {
+    "articulo": "agua mineral",
+    "cantidad": 40
+  },
+  {
+    "articulo": "vino",
+    "cantidad": 160
+  },
+  {
+    "articulo": "vinagre",
+    "cantidad": 40
+  },
+  {
+    "articulo": "termos",
+    "cantidad": 400
+  },
+  {
+    "articulo": "alfajor",
+    "cantidad": 60
+  },
+  {
+    "articulo": "galletitas",
+    "cantidad": 130
+  },
+  {
+    "articulo": "mate",
+    "cantidad": 80
+  },
+  {
+    "articulo": "cup of tea",
+    "cantidad": 60
+  },
+  {
+    "articulo": "cafe",
+    "cantidad": 250
+  },
+  {
+    "articulo": "celular",
+    "cantidad": 9000
+  },
+  {
+    "articulo": "auriculares",
+    "cantidad": 1500
+  }
+]
