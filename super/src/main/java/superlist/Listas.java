@@ -1,4 +1,4 @@
-package com.tokenitos.superlist;
+package main.java.com.tokenitos.superlist;
 
 import java.io.File;
 import java.io.IOException;

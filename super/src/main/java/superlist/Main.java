@@ -1,4 +1,4 @@
-package com.tokenitos.superlist;
+package main.java.com.tokenitos.superlist;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,9 +6,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Scanner;
 
-import static com.tokenitos.superlist.Archivo.*;
-import static com.tokenitos.superlist.Archivo.manejoPersistencia;
-import static com.tokenitos.superlist.Listas.*;
+import static main.java.com.tokenitos.superlist.Archivo.*;
+import static main.java.com.tokenitos.superlist.Listas.*;
 
 public class Main {
 
@@ -84,6 +83,8 @@ public class Main {
                 }
 
         }
+        validarPrecios(listaArticulo,listaPrecio);
+
         System.out.println("Desea guardar la lista? (si/no)");
         artiNombre = arti.nextLine();
 

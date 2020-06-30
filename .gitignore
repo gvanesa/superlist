@@ -1,6 +1,5 @@
 out/
 super/superlist.txt
-super/*.json
 target/
 
 
