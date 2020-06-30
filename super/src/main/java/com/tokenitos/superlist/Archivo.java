@@ -21,7 +21,10 @@ public class Archivo {
                 escribir(archivo, ListaArticulo);
             }
         }else{
-            escribir(archivo, ListaArticulo);
+            //escribir(archivo, ListaArticulo);
+            if (sobreEscribeOUsa(archivo,'u')){
+                escribir(archivo, ListaArticulo);
+            }
 
         }
 
@@ -110,10 +113,6 @@ public class Archivo {
 
 
         return preciosasdas;
-
-
-
-
 
 
     }

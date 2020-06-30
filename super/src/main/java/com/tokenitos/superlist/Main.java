@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.Scanner;
 
 import static com.tokenitos.superlist.Archivo.*;
+import static com.tokenitos.superlist.Archivo.manejoPersistencia;
 import static com.tokenitos.superlist.Listas.*;
 
 public class Main {
@@ -93,6 +94,12 @@ public class Main {
         if ("si".equalsIgnoreCase(artiNombre)) {
             manejoPersistencia(archivoLista,listaArticulo);
         }
+        validarPrecios(listaArticulo,listaPrecio);
+
+
+        manejoPersistencia(archivoPrecio,listaPrecio);
+
+
 
         System.out.println('\t'+"La lista completa de sus productos es:");
         listaArticulo.stream().forEach(System.out::println);
@@ -100,7 +107,7 @@ public class Main {
         System.out.println('\n'+"La cantidad de articulos distintos es: "+ listaArticulo.size());
         System.out.println('\n'+"La suma de articulos distintos es: "+ suma(listaArticulo));
 
-        validarPrecios(listaArticulo,listaPrecio);
+        //validarPrecios(listaArticulo,listaPrecio);
         System.out.println('\n'+"El monto total de los articulos es: "+ calculaPrecio(listaArticulo,listaPrecio));
 
     }

@@ -47,16 +47,16 @@ public class Articulo
 	}
 
 
-	public String toPrintList(){
+	public String toString(){
 		return '\t'+"Artículo: " + articulo + '\t'+'\t'+"Cantidad: " + cantidad;
 	}
 
-	public String toString(){
+	/*public String toString(){
 		return getArticulo() + "," + getCantidad();
-	}
+	}*/
 
 
-	public String toPrint(){
+	public String toPrintResumido(){
 		return articulo+";"+cantidad+ '\n' ;
 	}
 

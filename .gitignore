@@ -1,3 +1,28 @@
 out/
 super/superlist.txt
+super/*.json
 target/
+
+
+# User-specific stuff
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+

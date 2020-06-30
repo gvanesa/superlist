@@ -112,7 +112,9 @@ public class Listas {
             Articulo elemento= (Articulo) it.next();
 
             if (!(existeArticuloConsulta(listaPrecio,elemento))) {
-                listaPrecio.add(elemento);
+                actualizaPrecio(listaPrecio,elemento);
+               // listaPrecio.add(elemento);
+
             }
         }
     }
