@@ -66,5 +66,13 @@
   {
     "articulo": "auriculares",
     "cantidad": 1500
+  },
+  {
+    "articulo": "choklit",
+    "cantidad": 20
+  },
+  {
+    "articulo": "matecitos",
+    "cantidad": 20
   }
 ]

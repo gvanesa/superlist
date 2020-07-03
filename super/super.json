@@ -2,5 +2,13 @@
   {
     "articulo": "auriculares",
     "cantidad": 3
+  },
+  {
+    "articulo": "choklit",
+    "cantidad": 2
+  },
+  {
+    "articulo": "matecitos",
+    "cantidad": 1
   }
 ]
