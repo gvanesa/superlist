@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 import static com.tokenitos.superlist.Archivo.existeArchivo;
 import static com.tokenitos.superlist.Archivo.leerEImprimir;
-import static com.tokenitos.superlist.Main.isNumeric;
+import static com.tokenitos.superlist.Validaciones.isNumeric;
 
 public class Listas {
 
@@ -17,7 +17,7 @@ public class Listas {
 
 
 
-    public static Collection<Articulo> leerPrecios(File archivo) throws IOException {
+   public static Collection<Articulo> leerArchivo(File archivo) throws IOException {
 
         Collection<Articulo> listaPrecios = new ArrayList<>();
         if (existeArchivo(archivo))
@@ -25,6 +25,7 @@ public class Listas {
             listaPrecios=leerEImprimir(archivo);
         }
         return listaPrecios;
+        
     }
 
 

@@ -4,11 +4,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static com.tokenitos.superlist.Main.isNumeric;
-import static com.tokenitos.superlist.Main.validarVacio;
+import static com.tokenitos.superlist.Validaciones.isNumeric;
+import static com.tokenitos.superlist.Validaciones.validarVacio;
 
 
-public class FirstTest {
+public class ValidacionesTest {
 
 
     @Test
