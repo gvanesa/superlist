@@ -2,13 +2,9 @@ package com.tokenitos.superlist;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Scanner;
+import java.util.*;
 
 public class Archivo {
 
@@ -51,8 +47,13 @@ public class Archivo {
 
         Gson gson = new Gson();
         BufferedReader br = null;
-        Collection<Articulo> preciosasdas = null;
+        Collection<Articulo> preciosasdas = new ArrayList<>();;
+        Collection<Articulo> list = new ArrayList<>();
 
+        final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+
+
+        Collection<Articulo>  representacionBonita =  new ArrayList<>();;
         if (existeArchivo(archivo)) {
 
 
@@ -69,17 +70,14 @@ public class Archivo {
 
             }
 
-
-            final Type tipoListaDePrecios = new TypeToken<Collection<Articulo>>(){}.getType();
-            preciosasdas = gson.fromJson(fichero, tipoListaDePrecios);
-
-           /* Class<Articulo[]> articulo = Articulo[].class;
+           Class<Articulo[]> articulo = Articulo[].class;
             final Articulo[] articulosBienPresentados = gson.fromJson(fichero,articulo);
 
             preciosasdas= Arrays.asList(articulosBienPresentados);
-*/
+
+
         }
-        return preciosasdas;
+        return representacionBonita;
 
     }
 
